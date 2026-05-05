@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnTheGoPromoGirl", "OnTheGoPromoGirl.csproj", "{9E70B02F-CDD0-4F1D-BB1E-8A03C20395CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E70B02F-CDD0-4F1D-BB1E-8A03C20395CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E70B02F-CDD0-4F1D-BB1E-8A03C20395CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E70B02F-CDD0-4F1D-BB1E-8A03C20395CB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9E70B02F-CDD0-4F1D-BB1E-8A03C20395CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E70B02F-CDD0-4F1D-BB1E-8A03C20395CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E70B02F-CDD0-4F1D-BB1E-8A03C20395CB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {244659A7-2292-418C-AC04-7F675AED1EAA}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://onthegosolutions.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = OnTheGoPromoGirl.csproj
+		SccLocalPath1 = .
+	EndGlobalSection
+EndGlobal

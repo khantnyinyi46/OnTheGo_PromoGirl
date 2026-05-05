@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OnTheGoPromoGirl.Views.HomePage"
+             Title="Home"
+             Shell.FlyoutBehavior="Flyout"
+             Shell.FlyoutItemIsVisible="True">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
+    </Shell.BackButtonBehavior>
+
+    <VerticalStackLayout Spacing="20" Padding="20" VerticalOptions="Start">
+
+        <Label x:Name="syncLbl" Text="Syncing data and getting progress:" FontSize="20"/>
+
+        <telerik:RadLinearProgressBar x:Name="progressBar" Minimum="0" Maximum="100" ValueDisplayMode="Text" CustomText="loading..." LabelHorizontalOptions="Center" TrackFill="White"/>
+
+        <telerik:RadButton x:Name="masterSyncBtn" Text="Master Sync" Clicked="MasterSyncBtn_Clicked" FontSize="Large"/>
+
+        <telerik:RadButton x:Name="transferBtn" Text="Transfer" Clicked="TransferBtn_Clicked" FontSize="Large"/>
+
+    </VerticalStackLayout>
+    
+</ContentPage>

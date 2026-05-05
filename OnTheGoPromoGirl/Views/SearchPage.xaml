@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             x:Class="OnTheGoPromoGirl.Views.SearchPage"
+             Shell.FlyoutBehavior="Disabled">
+    
+    <Shell.BackButtonBehavior>
+        
+        <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
+        
+    </Shell.BackButtonBehavior>
+
+    <Shell.TitleView>
+
+        <StackLayout Orientation="Horizontal" Spacing="20">
+
+            <telerik:RadButton BackgroundImage="ic_back.png"
+                               Clicked ="BackButton_Clicked"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Start"
+                               BackgroundColor="Transparent"
+                               WidthRequest="40"
+                               HeightRequest="40"/>
+
+            <Label x:Name="title"
+                   VerticalOptions="Center"
+                   FontSize="Title"
+                   TextColor="White"
+                   HorizontalOptions="Center"/>
+
+        </StackLayout>
+
+    </Shell.TitleView>
+
+    <Grid x:Name="grid" RowSpacing="10" Padding="10,10,10,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0">
+            <StackLayout Orientation="Vertical" Spacing="10">
+                <StackLayout Orientation="Horizontal" 
+                            HorizontalOptions="FillAndExpand">
+
+                    <telerik:RadEntry x:Name="searchEntry"
+                                      Placeholder="Search Item Name"
+                                      ClearButtonVisibility="Never"
+                                      SelectionOnFocus="SelectAll"
+                                      HorizontalOptions="FillAndExpand"/>
+
+                    <telerik:RadButton x:Name="searchBtn"
+                                       BackgroundImage="ic_search.png"
+                                       Clicked="searchBtn_Clicked"
+                                       BackgroundColor="Transparent"
+                                       HorizontalOptions="End"
+                                       WidthRequest="40"
+                                       HeightRequest="40"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="EndAndExpand">
+
+                        <Label Text="Total Rows: "
+                               VerticalOptions="Center"
+                               FontSize="12"/>
+                        <Label x:Name="rowNo"
+                               VerticalOptions="Center"
+                               FontSize="12"/>
+
+                    </StackLayout>
+
+                </StackLayout>
+
+            </StackLayout>
+
+        </StackLayout>
+
+        <StackLayout Grid.Row="1" Orientation="Horizontal" Padding="10" BackgroundColor="GhostWhite">
+            <Label Text="Item ID" HorizontalOptions="FillAndExpand"  />
+            <Label Text="Item Name" HorizontalOptions="FillAndExpand"  />
+        </StackLayout>
+        
+        <CollectionView x:Name="collectionView" SelectionMode="Single" Grid.Row="2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" Orientation="Horizontal">
+                        <Label Text="{Binding ItemID}" FontSize="Caption" HorizontalOptions="FillAndExpand" />
+                        <Label Text="{Binding ItemName}" FontSize="Caption" HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+    
+</ContentPage>

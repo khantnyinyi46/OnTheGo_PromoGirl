@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             x:Class="OnTheGoPromoGirl.Views.ActivatePage">
+
+    <Shell.BackButtonBehavior>
+
+        <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
+
+    </Shell.BackButtonBehavior>
+
+    <!--<StackLayout Spacing="0" Padding="30" VerticalOptions="Center">
+
+        <Image Source="icon.png" HorizontalOptions="Center"></Image>
+
+        <Label Text="Device ID"
+               FontSize="20"/>
+
+        <telerik:RadEntry x:Name="deviceIDEntry"
+                          ClearButtonVisibility="Never"
+                          SelectionOnFocus="SelectAll"
+                          Text=""
+                          FontSize="20"/>
+
+        <Label Text="Server URL"
+               FontSize="20"/>
+
+        <Editor x:Name="serverURLEditor" AutoSize="TextChanges" MaxLength="100" Placeholder="http://severurl" Text="" FontSize="20" Focused="serverURLEditor_Focused"/>
+
+        <telerik:RadButton x:Name="activateBtn" Text="Activate" FontSize="20" BackgroundColor="RoyalBlue" HorizontalOptions="FillAndExpand" Clicked="activateBtn_Clicked"/>
+
+    </StackLayout>-->
+
+    <telerik:RadBusyIndicator x:Name="BusyIndicator"
+                        AnimationContentHeightRequest="100"
+                        AnimationContentWidthRequest="100"
+                        AnimationContentColor="#674bb2"
+                        AutomationId="busyIndicator"
+                        AnimationType="Animation3"      
+                        IsBusy="True">
+        <telerik:RadBusyIndicator.Content>
+            <StackLayout Spacing="0" Padding="30" VerticalOptions="Center">
+
+                <Image Source="icon.png" HorizontalOptions="Center"></Image>
+
+                <Label Text="Device ID"
+                       FontSize="20"/>
+
+                <telerik:RadEntry x:Name="deviceIDEntry"
+                                  ClearButtonVisibility="Never"
+                                  SelectionOnFocus="SelectAll"
+                                  Text=""
+                                  FontSize="20"/>
+
+                <Label Text="Server URL"
+                       FontSize="20"/>
+
+                <Editor x:Name="serverURLEditor" AutoSize="TextChanges" MaxLength="100" Placeholder="http://severurl" Text="" FontSize="20" Focused="serverURLEditor_Focused"/>
+
+                <telerik:RadButton x:Name="activateBtn" Text="Activate" FontSize="20" BackgroundColor="RoyalBlue" HorizontalOptions="FillAndExpand" Clicked="activateBtn_Clicked"/>
+
+            </StackLayout>
+        </telerik:RadBusyIndicator.Content>
+    </telerik:RadBusyIndicator>
+
+</ContentPage>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             x:Class="OnTheGoPromoGirl.Views.LoginPage"
+             Shell.FlyoutBehavior="Disabled">
+    
+    <Shell.BackButtonBehavior>
+        
+        <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
+        
+    </Shell.BackButtonBehavior>
+    
+    <StackLayout Spacing="2" Padding="30" VerticalOptions="Center">
+        
+        <Image Source="icon.png"
+           HorizontalOptions="Center">
+        </Image>
+
+        <Label Text="Device ID"
+                FontSize="20"
+               />
+
+        <Label x:Name="DeviceIDLbl"
+               FontSize="16"
+               TextColor="Red"/>
+
+        <Label Text="Promo Girl ID"
+                FontSize="20"
+               />
+
+        <telerik:RadEntry x:Name="PromoGirlIDEntry"
+                          ClearButtonVisibility="Never"
+                          SelectionOnFocus="SelectAll"
+                          FontSize="20"/>
+
+        <Label Text="Password"
+                FontSize="20"
+               />
+
+        <telerik:RadEntry x:Name="PasswordEntry"
+                          ClearButtonVisibility="Never"
+                          SelectionOnFocus="SelectAll"
+                          FontSize="20"
+                          IsPassword="True"/>
+
+        <telerik:RadButton x:Name="loginBtn" Text="Login" FontSize="20" BackgroundColor="RoyalBlue" HorizontalOptions="FillAndExpand" Clicked="loginBtn_Clicked"/>
+
+        <Label x:Name="versionLbl" FontSize="Body"/>
+
+    </StackLayout>
+    
+</ContentPage>

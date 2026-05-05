@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OnTheGoPromoGirl.Views.TransferLinesPage"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             Shell.FlyoutBehavior="Disabled">
+    
+    <Shell.BackButtonBehavior>
+
+        <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
+
+    </Shell.BackButtonBehavior>
+
+    <Shell.TitleView>
+
+        <StackLayout Orientation="Horizontal" Spacing="20">
+
+            <Label x:Name="title"
+                    VerticalOptions="Center"
+                    FontSize="Title"
+                    TextColor="White"
+                    Text="Transfer"
+                    HorizontalOptions="Center"/>
+
+        </StackLayout>
+
+    </Shell.TitleView>
+
+    <Grid x:Name="grid" RowSpacing="10" Padding="10,10,10,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+
+        <StackLayout Orientation="Vertical" Grid.Row="0" Padding="10" Spacing="20">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Transfer ID ..."
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="Center"/>
+
+                <Label x:Name="transferID"
+                       HorizontalOptions="FillAndExpand"/>
+
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <telerik:RadButton x:Name="newBtn"
+                                   Text="Add New Item"
+                                   Clicked="newBtn_Clicked"
+                                   HorizontalOptions="FillAndExpand"/>
+                <telerik:RadButton x:Name="removeBtn"
+                                   Text="Remove"
+                                   HorizontalOptions="FillAndExpand"
+                                   Clicked="removeBtn_Clicked"
+                                   IsVisible="False"/>
+                <telerik:RadButton x:Name="browseBtn"
+                                   Text="Browse"
+                                   HorizontalOptions="FillAndExpand"
+                                   Clicked="browseBtn_Clicked"
+                                   IsVisible="False"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Padding="10" BackgroundColor="WhiteSmoke">
+                <Label Text="Item ID" HorizontalOptions="FillAndExpand"  />
+                <Label Text="Item Name" HorizontalOptions="FillAndExpand"  />
+            </StackLayout>
+            
+        </StackLayout>
+        
+        <!--<telerik:RadDataGrid Grid.Row="1"
+                             x:Name="dataGrid"
+                             LoadOnDemand="grid_LoadOnDemand"
+                             LoadOnDemandMode="Manual"
+                             SelectionMode="Single"
+                             SelectionChanged="dataGrid_SelectionChanged"
+                             AutoGenerateColumns="False">
+
+            <telerik:RadDataGrid.Columns>
+                <telerik:DataGridTextColumn PropertyName="TransferID"
+                                            IsVisible="False"/>
+                <telerik:DataGridTextColumn PropertyName="ItemID"
+                                            CanUserEdit="False"
+                                            SizeMode="Stretch"
+                                            IsVisible="True"/>
+                <telerik:DataGridTextColumn PropertyName="ItemName"
+                                            CanUserEdit="False"
+                                            SizeMode="Stretch"
+                                            IsVisible="True"/>
+                <telerik:DataGridTextColumn PropertyName="TransferTo"
+                                            IsVisible="False"/>
+                <telerik:DataGridTextColumn PropertyName="TransferQty"
+                                            IsVisible="False"/>
+                <telerik:DataGridTextColumn PropertyName="UomID"
+                                            IsVisible="False"/>
+                <telerik:DataGridTextColumn PropertyName="CreateDateTime"
+                                            IsVisible="False"/>
+
+            </telerik:RadDataGrid.Columns>
+            
+        </telerik:RadDataGrid>-->
+        <CollectionView x:Name="collectionView" SelectionMode="Single" Grid.Row="1" SelectionChanged="collectionView_SelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" Orientation="Horizontal">
+                        <Label Text="{Binding ItemID}" FontSize="Caption" HorizontalOptions="FillAndExpand" />
+                        <Label Text="{Binding ItemName}" FontSize="Caption" HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <StackLayout Orientation="Horizontal" Grid.Row="2">
+            <telerik:RadButton x:Name="confirmSyncBtn"
+                               Text="Confirm and Sync"
+                               Clicked="confirmSyncBtn_Clicked"
+                               IsEnabled="False"
+                               HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+
+    </Grid>
+
+</ContentPage>

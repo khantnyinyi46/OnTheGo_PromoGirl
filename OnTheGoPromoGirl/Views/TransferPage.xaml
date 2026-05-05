@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OnTheGoPromoGirl.Views.TransferPage"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:local="clr-namespace:OnTheGoPromoGirl">
+    
+    <Shell.BackButtonBehavior>
+
+        <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
+
+    </Shell.BackButtonBehavior>
+
+    <Shell.TitleView>
+
+        <StackLayout Orientation="Horizontal" Spacing="3" HorizontalOptions="FillAndExpand" Padding="10">
+            <Label Text="Transfer"
+                   VerticalOptions="Center"
+                   FontSize="Title"
+                   TextColor="White"
+                   HorizontalOptions="StartAndExpand"/>
+
+            <telerik:RadButton x:Name="forwardBtn"
+                               Text="To Promotional Items"
+                               ImageSource="ic_forward.png"
+                               ContentLayout="right"
+                               Clicked="forwardBtn_Clicked"
+                               BackgroundColor="Transparent"
+                               BorderColor="White"
+                               BorderThickness="1"
+                               HeightRequest="40"
+                               HorizontalOptions="End">
+            </telerik:RadButton>
+
+        </StackLayout>
+
+    </Shell.TitleView>
+
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="telerik:RadEntry">
+                <Setter Property="BorderThickness" Value="0"/>
+            </Style>
+            <local:MyCellDecorationSelector x:Key="MyCellDecorationSelector">
+                <local:MyCellDecorationSelector.CellTemplate1>
+                    <telerik:DataGridBorderStyle BackgroundColor="LightGreen"/>
+                </local:MyCellDecorationSelector.CellTemplate1>
+            </local:MyCellDecorationSelector>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+    <ContentPage.Resources>
+        <DataTemplate x:Key="DefaultTemplate">
+                <StackLayout Padding="10" Orientation="Horizontal">
+                    <Label Text="{Binding SalesPersonID}" FontSize="Caption" HorizontalOptions="FillAndExpand" />
+                    <Label Text="{Binding SalesPersonName}" FontSize="Caption" HorizontalOptions="FillAndExpand" />
+                    <Label Text="{Binding TransferQty}" FontSize="Caption" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+        </DataTemplate>
+        <DataTemplate x:Key="SpecialTemplate">
+
+                <StackLayout Padding="10" Orientation="Horizontal" BackgroundColor="LightGreen">
+                    <Label Text="{Binding SalesPersonID}" FontSize="Caption" HorizontalOptions="FillAndExpand" />
+                    <Label Text="{Binding SalesPersonName}" FontSize="Caption" HorizontalOptions="FillAndExpand"/>
+                    <Label Text="{Binding TransferQty}" FontSize="Caption" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+
+        </DataTemplate>
+        <local:MyItemTemplateSelector x:Key="MyItemTemplateSelector"
+                                      DefaultTemplate="{StaticResource DefaultTemplate}"
+                                      SpecialTemplate="{StaticResource SpecialTemplate}" />
+    </ContentPage.Resources>
+
+
+    <Grid x:Name="grid" RowSpacing="5" Padding="10,10,10,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+
+        </Grid.RowDefinitions>
+
+        <VerticalStackLayout Grid.Row="0" Spacing="10" Padding="10,10,10,0" VerticalOptions="Start">
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="Transfer ID"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="Center"/>
+
+                <Label x:Name="transferID"
+                       HorizontalOptions="FillAndExpand"
+                       FontSize="Caption"/>
+
+                <Label x:Name="emptyLbl_1" HorizontalOptions="End"/>
+
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="Item Name"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="Center"/>
+
+                <Label x:Name="itemName"
+                       FontSize="Caption"
+                       HorizontalOptions="FillAndExpand"/>
+
+                <telerik:RadButton x:Name="itemSearchBtn"
+                                   Clicked="itemSearch_Clicked"
+                                   BackgroundImage="ic_search.png"
+                                   BackgroundColor="Transparent"
+                                   IsVisible="True"
+                                   HeightRequest="40"
+                                   WidthRequest="40"
+                                   HorizontalOptions="End"/>
+
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="Unit of Measure"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"/>
+
+                <Label Text="PCS"
+                       HorizontalOptions="FillAndExpand"/>
+
+                <Label x:Name="emptyLbl_2" HorizontalOptions="End"/>
+
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" 
+                         HorizontalOptions="FillAndExpand">
+
+                <telerik:RadEntry x:Name="searchEntry"
+                                  Placeholder="Search Promo Name"
+                                  ClearButtonVisibility="Never"
+                                  SelectionOnFocus="SelectAll"
+                                  HorizontalOptions="FillAndExpand"
+                                  Completed="searchEntry_Completed"
+                                  BorderThickness="3"/>
+
+                <telerik:RadButton x:Name="promoSearchBtn"
+                                   Clicked="promoSearch_Clicked"
+                                   BackgroundImage="ic_search.png"
+                                   BackgroundColor="Transparent"
+                                   IsVisible="True"
+                                   HeightRequest="40"
+                                   WidthRequest="40"
+                                   HorizontalOptions="End"/>
+
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <telerik:RadButton x:Name="toggleFilterBtn"
+                                   Text="Show Filled Rows"
+                                   Clicked="OnToggleFilterButtonClicked"
+                                   HorizontalOptions="Start"
+                                   IsVisible="False"
+                                   FontSize="12"/>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                    <Label Text="Total Rows: "
+                           FontSize="12"/>
+
+                    <Label x:Name="rowNo"
+                           FontSize="12"/>
+
+                </StackLayout>
+
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Padding="0,3,0,3" HorizontalOptions="FillAndExpand" BackgroundColor="WhiteSmoke">
+                <Label Text="Promoter ID" HorizontalOptions="FillAndExpand" />
+                <Label Text="Promoter Name" HorizontalOptions="FillAndExpand" />
+                <Label Text="Transfer Qty" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+
+        </VerticalStackLayout>
+
+        <CollectionView x:Name="collectionView" Grid.Row="1" SelectionMode="Single"
+                        SelectionChanged="collectionView_SelectionChanged"
+                        ItemTemplate="{StaticResource MyItemTemplateSelector}">
+        </CollectionView>
+
+        <!--<telerik:RadDataGrid Grid.Row="1"
+                             x:Name="dataGrid"
+                             LoadOnDemand="grid_LoadOnDemand"
+                             LoadOnDemandMode="Manual"
+                             AutoGenerateColumns="False"
+                             SelectionMode="Single"
+                             SelectionChanged="dataGrid_SelectionChanged"
+                             LoadOnDemandBufferItemsCount="2">
+            <telerik:RadDataGrid.Columns>
+                <telerik:DataGridTextColumn PropertyName="SalesPersonID"
+                                            HeaderText="Promoter ID"
+                                            CanUserEdit="False" 
+                                            SizeMode="Stretch" 
+                                            IsVisible="True"
+                                            CanUserFilter="False"
+                                            CellDecorationStyleSelector="{StaticResource MyCellDecorationSelector}"/>
+                <telerik:DataGridTextColumn PropertyName="SalesPersonName"
+                                            HeaderText="Promoter Name"
+                                            CanUserEdit="False" 
+                                            SizeMode="Stretch" 
+                                            IsVisible="True"
+                                            CanUserFilter="False"
+                                            CellDecorationStyleSelector="{StaticResource MyCellDecorationSelector}"/>
+                <telerik:DataGridTextColumn PropertyName="TransferQty"
+                                            HeaderText="Transfer Qty"
+                                            SizeMode="Stretch"
+                                            IsVisible="True"
+                                            CanUserFilter="False"
+                                            CellDecorationStyleSelector="{StaticResource MyCellDecorationSelector}"/>
+                <telerik:DataGridTextColumn PropertyName="UDF1" IsVisible="False"/>
+                <telerik:DataGridTextColumn PropertyName="UDF2" IsVisible="False"/>
+                <telerik:DataGridTextColumn PropertyName="UDF3" IsVisible="False"/>
+            </telerik:RadDataGrid.Columns>
+
+        </telerik:RadDataGrid>-->
+        
+
+    </Grid>
+
+
+</ContentPage>
